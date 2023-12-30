@@ -1,0 +1,16 @@
+/*
+!.gitignore
+
+!/kitty/
+/kitty/pass_keys.py
+/kitty/get_layout.py
+
+!/dunst/
+
+!/waybar/
+
+!/hypr/
+
+!/rofi/
+
+!/git/

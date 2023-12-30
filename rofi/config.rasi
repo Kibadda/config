@@ -1,0 +1,9 @@
+configuration {
+  font: "JetBrainsMono Nerd Font 14";
+  cycle: true;
+  modi: "drun";
+  kb-element-next: "Control+j";
+  kb-element-prev: "Control+k";
+  kb-accept-entry: "Return";
+  kb-remove-to-eol: "";
+}

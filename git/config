@@ -1,0 +1,10 @@
+[user]
+	name = Michael Strobel
+	email = mstrobel97@gmail.com
+	signingkey = 3B6861376B6D3D78
+[pull]
+	rebase = true
+[init]
+	defaultBranch = main
+[commit]
+	gpgsign = true

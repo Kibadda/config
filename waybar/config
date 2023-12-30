@@ -1,0 +1,65 @@
+[
+  {
+    "layer": "top",
+    "position": "top",
+    "height": 34,
+    "output": ["DP-1", "DP-2"],
+    "modules-left": [
+      "hyprland/workspaces"
+    ],
+    "modules-center": [],
+    "modules-right": [
+      "cpu",
+      "memory",
+      "disk",
+      "pulseaudio",
+      "network"
+    ],
+    "hyprland/workspaces": {
+      "format": "<span font='11'>{name}</span>"
+    },
+    "cpu": {
+      "format": "{usage}% <span font='11'></span>",
+      "interval": 1
+    },
+    "memory": {
+      "format": "{percentage}% <span font='11'></span>",
+      "interval": 1
+    },
+    "disk": {
+      "format": "{percentage_used}% <span font='11'></span>"
+    },
+    "pulseaudio": {
+      "format": "{volume}% <span font='11'>{icon}</span>",
+      "format-muted": "{volume}% <span font='11'>x</span>",
+      "format-icons": {
+        "default": ["", "", ""],
+      }
+    },
+    "network": {
+      "format-ethernet": "{ipaddr} <span font='11'></span>",
+      "format-disconnected": "Disconnected"
+    }
+  },
+  {
+    "layer": "top",
+    "position": "bottom",
+    "height": 34,
+    "output": ["DP-1", "DP-2"],
+    "modules-left": ["custom/spotify"],
+    "modules-center": ["custom/yubikey"],
+    "modules-right": ["clock"],
+    "clock": {
+      "format": "{:%H:%M:%S - %d.%m.%Y}",
+      "interval": 1
+    },
+    "custom/yubikey": {
+      "exec": "/home/michael/.config/waybar/yubikey.sh",
+      "return-type": "json"
+    },
+    "custom/spotify": {
+      "exec": "/home/michael/.config/waybar/spotify.sh",
+      "interval": 1
+    }
+  }
+]

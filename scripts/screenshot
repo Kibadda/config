@@ -16,7 +16,7 @@ do
 done
 
 if [ $clip -eq 1 ]; then
-  if [ $area -eq 1]; then
+  if [ $area -eq 1 ]; then
     grim -g "$(slurp)" - | wl-copy
   else
     gimd - | wl-copy
@@ -24,15 +24,15 @@ if [ $clip -eq 1 ]; then
 
   dunstify Screenshot "saved to clipboard"
 else
-  dir="$HOME/.Pictures"
+  dir="$HOME/Pictures"
   [[ -d $dir ]] || mkdir $dir
 
   filename="$dir/$(date +'%Y-%m-%d_%H:%M:%S_grim.png')"
 
   if [ $area -eq 1 ]; then
-    grim -g "$(slurp)" $filename
+    grim -g "$(slurp)" "$filename"
   else
-    grim $filename
+    grim "$filename"
   fi
 
   dunstify Screenshot "saved to $filename"

@@ -10,7 +10,7 @@ if playerctl -p spotify status 1>/dev/null 2>/dev/null; then
   song=$(playerctl -p spotify metadata --format "{{ artist }} - {{ title }}")
   time=$(playerctl -p spotify metadata --format "{{ duration(position) }} / {{ duration(mpris:length) }}")
 
-  echo "  $song  $status $time"
+  echo "  $song  $status  $time"
 else
   echo "  spotify not running"
 fi

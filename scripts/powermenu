@@ -1,0 +1,25 @@
+#!/bin/sh
+
+UPTIME="`uptime | cut -d' ' -f5 | sed -e 's/,//'`"
+
+ACTION=$(gum choose --header.foreground="555" --header="uptime: $UPTIME" "lock" "logout" "sleep" "shutdown" "restart")
+
+case $ACTION in
+  lock)
+    CMD="swaylock"
+    ;;
+  sleep)
+    CMD="systemctl suspend && swaylock"
+    ;;
+  logout)
+    CMD="hyprctl dispatch exit"
+    ;;
+  shutdown)
+    CMD="systemctl poweroff"
+    ;;
+  restart)
+    CMD="systemctl reboot"
+    ;;
+esac
+
+test -n "$ACTION" && test -n "$CMD" && gum confirm "Are you sure?" && eval "$CMD"

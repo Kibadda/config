@@ -1,6 +1,8 @@
 /*
 !.gitignore
 
+!/scripts/
+
 !/kitty/
 /kitty/pass_keys.py
 /kitty/get_layout.py
@@ -14,3 +16,5 @@
 !/rofi/
 
 !/git/
+
+!/swaylock/

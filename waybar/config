@@ -35,7 +35,7 @@
     "network": {
       "format-ethernet": "<span font='11'></span> {bandwidthUpBytes} | <span font='11'></span> {bandwidthDownBytes} | {ipaddr} <span font='11'></span>",
       "format-disconnected": "Disconnected",
-      "interval": 1
+      "interval": 5
     }
   },
   {

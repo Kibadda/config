@@ -6,9 +6,9 @@ do
   if [[ $? == 0 ]];
   then
     text=$(echo "$text" | sed -E "s/\s+/ /g")
-    echo "{\"text\": \"$text\"}"
+    echo "$text"
     exit
   fi
   sleep 2
 done
-echo "{\"text\":\"\"}"
+echo ""

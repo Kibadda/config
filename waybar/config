@@ -52,8 +52,7 @@
     },
     "custom/weather": {
       "exec": "waybar-weather",
-      "interval": 3600,
-      "return-type": "json"
+      "interval": 3600
     }
   },
   {
@@ -96,8 +95,7 @@
       }
     },
     "custom/yubikey": {
-      "exec": "waybar-yubikey",
-      "return-type": "json"
+      "exec": "waybar-yubikey"
     },
     "custom/spotify": {
       "exec": "waybar-spotify",

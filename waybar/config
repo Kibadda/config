@@ -51,7 +51,7 @@
       "interval": 5
     },
     "custom/weather": {
-      "exec": "weather-display",
+      "exec": "waybar-weather",
       "interval": 3600,
       "return-type": "json"
     }
@@ -96,11 +96,11 @@
       }
     },
     "custom/yubikey": {
-      "exec": "yubikey-display",
+      "exec": "waybar-yubikey",
       "return-type": "json"
     },
     "custom/spotify": {
-      "exec": "spotify-display",
+      "exec": "waybar-spotify",
       "interval": 1
     }
   }

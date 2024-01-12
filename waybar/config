@@ -48,7 +48,25 @@
     "modules-right": ["clock"],
     "clock": {
       "format": "{:%H:%M:%S - %d.%m.%Y}",
-      "interval": 1
+      "interval": 1,
+      "tooltip-format": "<tt><small>{calendar}</small></tt>",
+      "calendar": {
+        "mode": "year",
+        "mode-mon-col": 3,
+        "weeks-pos": "left",
+        "on-scroll": 1,
+        "format": {
+          "months": "<span color='#FFEAD3'><b>{}</b></span>",
+          "days": "<span color='#ECC6D9'><b>{}</b></span>",
+          "weeks": "<span color='#99FFDD'><b>W{}</b></span>",
+          "weekdays": "<span color='#FFCC66'><b>{}</b></span>",
+          "today": "<span color='#FF6699'><b><u>{}</u></b></span>"
+        }
+      },
+      "actions": {
+        "on-scroll-up": "shift_down",
+        "on-scroll-down": "shift_up"
+      }
     },
     "custom/spotify": {
       "exec": "spotify-display",

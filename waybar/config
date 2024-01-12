@@ -3,10 +3,23 @@
     "layer": "top",
     "position": "top",
     "height": 34,
-    "output": ["DP-1", "DP-2"],
-    "modules-left": ["hyprland/workspaces"],
-    "modules-center": ["custom/yubikey"],
-    "modules-right": ["cpu", "memory", "disk", "pulseaudio", "network"],
+    "output": [
+      "DP-1",
+      "DP-2"
+    ],
+    "modules-left": [
+      "hyprland/workspaces"
+    ],
+    "modules-center": [
+      "custom/yubikey"
+    ],
+    "modules-right": [
+      "cpu",
+      "memory",
+      "disk",
+      "pulseaudio",
+      "network"
+    ],
     "hyprland/workspaces": {
       "format": "<span font='11'>{name}</span>"
     },
@@ -25,7 +38,11 @@
       "format": "{volume}% <span font='11'>{icon}</span>",
       "format-muted": "{volume}% <span font='11'></span>",
       "format-icons": {
-        "default": ["", "", ""],
+        "default": [
+          "",
+          "",
+          ""
+        ]
       }
     },
     "custom/yubikey": {
@@ -42,10 +59,17 @@
     "layer": "top",
     "position": "bottom",
     "height": 34,
-    "output": ["DP-1", "DP-2"],
-    "modules-left": ["custom/spotify"],
+    "output": [
+      "DP-1",
+      "DP-2"
+    ],
+    "modules-left": [
+      "custom/spotify"
+    ],
     "modules-center": [],
-    "modules-right": ["clock"],
+    "modules-right": [
+      "clock"
+    ],
     "clock": {
       "format": "{:%H:%M:%S - %d.%m.%Y}",
       "interval": 1,

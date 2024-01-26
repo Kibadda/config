@@ -1,7 +1,0 @@
-#!/bin/sh
-
-pushd $HOME/neovim
-git pull
-make CMAKE_BUILD_TYPE=RelWithDebInfo
-sudo make install
-popd

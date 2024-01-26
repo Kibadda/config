@@ -1,0 +1,108 @@
+#!/bin/sh
+
+set -e
+
+BUILD_DIR="$HOME/neovim"
+
+function info() {
+  local blue="\033[0;34m"
+  local nc="\033[0m"
+  echo -e "$blue$1$nc"
+}
+
+function run() {
+  echo "-> $*"
+  "$@" >> "$BUILD_DIR.log" || cat "$BUILD_DIR.log"
+}
+
+function changes() {
+  local upstream
+  upstream=$(git rev-parse --abbrev-ref --symbolic-full-name "@{u}")
+
+  local ahead_behind
+  read -ra ahead_behind <<< "$(git rev-list --left-right --count "$upstream...HEAD")"
+
+  local -i behind=${ahead_behind[0]}
+
+  if [[ $behind == 0 ]]; then
+    info "No changes"
+    return 1
+  fi
+
+  info "$behind new changes"
+  git log --oneline "$upstream...HEAD"
+
+  return 0
+}
+
+function install() {
+  local install_msg
+  if [[ -z "$NVIM_INSTALL_PREFIX" ]] || [[ ! -w "$NVIM_INSTALL_PREFIX" ]]; then
+    install_msg="Installing (with sudo)"
+    SUDO_OPT=sudo
+  else
+    install_msg="Installing"
+    SUDO_OPT=""
+  fi
+
+  info "$install_msg"
+  run $SUDO_OPT make \
+    CMAKE_BUILD_TYPE=RelWithDebInfo \
+    "CMAKE_INSTALL_PREFIX=$NVIM_INSTALL_PREFIX" \
+    install
+
+}
+
+function main() {
+  ASAN=0
+  FORCE=0
+
+  while [[ $# -gt 0 ]]; do
+    case $1 in
+      -a) ASAN=1 ;;
+      -f) FORCE=1 ;;
+    esac
+    shift
+  done
+
+  run rm -f "$BUILD_DIR.log"
+
+  if [[ ! -d "$BUILD_DIR/.git" ]]; then
+    run rm -rf "$BUILD_DIR"
+    info "Cloning neovim"
+    run git clone https://github.com/neovim/neovim \
+      --depth 1 \
+      --quiet \
+      "$BUILD_DIR"
+  fi
+
+  run cd "$BUILD_DIR"
+
+  info "Fetching updates"
+  run git fetch
+
+  if ((!FORCE)) && ! changes; then
+    info "Done!"
+    exit
+  fi
+
+  info "Rebasing"
+  run git rebase
+
+  info "Cleaning workspace"
+  run make distclean
+
+  if ((ASAN)); then
+    info "Building (ASAN enabled)"
+    run make CMAKE_EXTRA_FLAGS="-DCMAKE_C_COMPILER=clang -DENABLE_ASAN_UBSAN=1"
+  else
+    info "Building"
+    run make CMAKE_BUILD_TYPE=RelWithDebInfo
+  fi
+
+  install
+
+  info "Done!"
+}
+
+main "$@"

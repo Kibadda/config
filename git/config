@@ -1,10 +1,15 @@
 [user]
-	name = Michael Strobel
-	email = mstrobel97@gmail.com
-	signingkey = 3B6861376B6D3D78
+  name = Michael Strobel
+  email = mstrobel97@gmail.com
+  signingkey = 3B6861376B6D3D78
 [pull]
-	rebase = true
+  rebase = true
 [init]
-	defaultBranch = main
+  defaultBranch = main
 [commit]
-	gpgsign = true
+  gpgsign = true
+[alias]
+  nah = "!f(){ git reset --hard; git clean -df; if [ -d \".git/rebase-apply\" ] || [ -d \".git/rebase-merge\" ]; then git rebase --abort; fi; }; f"
+  forget = "!git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D"
+  forgetlist = "!git fetch -p && git branch -vv | awk '/: gone]/{print $1}'"
+  uncommit = reset --soft HEAD~1

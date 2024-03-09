@@ -1,0 +1,17 @@
+export KEYID=0x3B6861376B6D3D78
+export GPG_TTY="$(tty)"
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpgconf --launch gpg-agent
+
+export PATH="$PATH:$HOME/.local/bin:$HOME/.config/scripts:$HOME/.config/composer/vendor/bin"
+
+export EDITOR=nvim
+export VISUAL=$EDITOR
+export BROWSER=google-chrome-stable
+
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HEOM="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+
+export MANPAGER='nvim +Man!'

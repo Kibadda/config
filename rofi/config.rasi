@@ -7,3 +7,4 @@ configuration {
   kb-accept-entry: "Return";
   kb-remove-to-eol: "";
 }
+@theme "drun"
